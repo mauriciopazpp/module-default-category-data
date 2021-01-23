@@ -1,0 +1,24 @@
+<?php
+/**
+ * @author Mauricio Paz Pacheco
+ * @copyright Copyright © 2020 Mpaz. All rights reserved.
+ * @package Mpaz_DefaultCategoryData
+ */
+?>
+<?php $categories = $this->getCategories($this->getData('categories')); ?>
+
+<?php if (count($categories) > 0): ?>
+    <div class="<?=count($categories) !== 1 ? 'category-card-line' : ''?>">
+        <?php foreach ($categories as $category): ?>
+            <div class="category-card-content">
+                <img 
+                    class="category-card-image" 
+                    src="<?= $category['image'] ? $category['image'] : $this->getPlaceHolderImage() ?>" 
+                    alt="Category <?= $category['name'] ?>">
+                <div class="category-card-actions">
+                    <?= $category['description'] ?>
+                </div>
+            </div>
+        <?php endforeach; ?>
+    </div>
+<?php endif; ?>
